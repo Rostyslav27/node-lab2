@@ -31,6 +31,10 @@ module.exports = {
       "sonarjs"
   ],
   "rules": {
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "space-before-function-paren": "off",
+    "comma-dangle": "off"
   }
 }
