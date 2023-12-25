@@ -1,5 +1,7 @@
 import http from "http";
 import { safeJSON } from "./utils";
+import { URL } from "url";
+import { router } from "./router";
 
 type ContentTypeProccessor = (a: string) => { [key: string]: any };
 
@@ -12,6 +14,8 @@ const processedContentTypes: { [key: string]: ContentTypeProccessor } = {
 };
 
 const server = http.createServer(async (req, res) => {
+  const url = new URL(req.url || "/", `https://${req.headers.host}`);
+  const method = req.method || "GET";
   let payload: { [key: string]: any } = {};
   let rawRequest: string = "";
   for await (const chunk of req) {
@@ -25,12 +29,10 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
-  console.log(payload);
-
-  res.end("Hello world");
+  router.handle(method, url.pathname, { data: payload }, res);
 });
 
-server.on("clientError", (err, socket) => {
+server.on("clientError", (_err, socket) => {
   socket.end("HTTP/1.1 400 Bd Request\r\n\r\n");
 });
 
