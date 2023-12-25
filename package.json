@@ -4,7 +4,8 @@
   "description": "lab1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "start": "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Rostyslav27/node-lab1/issues"
   },
-  "homepage": "https://github.com/Rostyslav27/node-lab1#readme"
+  "homepage": "https://github.com/Rostyslav27/node-lab1#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "typescript": "^5.3.3"
+  }
 }
