@@ -7,7 +7,9 @@
     "build": "npx tsc",
     "start": "node build/index.js",
     "lint": "eslint src/",
-    "lint:fix": "eslint --fix src/"
+    "lint:fix": "eslint --fix src/",
+    "format": "npx prettier src/ --check",
+    "format:fix": "npx prettier src/ --write"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "typescript": "^5.3.3",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-sonarjs": "^0.23.0"
+    "eslint-plugin-sonarjs": "^0.23.0",
+    "prettier": "3.1.1"
   }
 }
